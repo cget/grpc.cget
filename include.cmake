@@ -5,7 +5,9 @@ CGET_HAS_DEPENDENCY(protobuf GITHUB jdavidberger/protobuf FINDNAME Protobuf OPTI
 
 SET(include_str)
 list(APPEND include_str "include(${CGET_BIN_DIR}/load.cmake)\n")
-list(APPEND include_str "SET(_gRPC_BASELIB_LIBRARIES dl pthread CACHE STRING \"\" FORCE)\n")
+if(NOT MSVC)
+    list(APPEND include_str "SET(_gRPC_BASELIB_LIBRARIES dl pthread CACHE STRING \"\" FORCE)\n")
+endif()
 
 file(WRITE "${CMAKE_CURRENT_LIST_DIR}/preload.cmake" ${include_str})
 CGET_MESSAGE(3 "Writing to ${CMAKE_CURRENT_LIST_DIR}/preload.cmake")
