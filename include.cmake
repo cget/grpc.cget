@@ -1,10 +1,10 @@
 CGET_HAS_DEPENDENCY(zlib GITHUB madler/zlib VERSION v1.2.8 FINDNAME ZLIB)
 
-CGET_HAS_DEPENDENCY(OpenSSL  REGISTRY VERSION OpenSSL_1_0_2h COMMIT_ID a140ffe)
+CGET_HAS_DEPENDENCY(OpenSSL  REGISTRY VERSION OpenSSL_1_0_2h COMMIT_ID b7fcc4b)
 CGET_HAS_DEPENDENCY(protobuf GITHUB jdavidberger/protobuf FINDNAME Protobuf OPTIONS -Dprotobuf_BUILD_TESTS:bool=OFF -Dprotobuf_MSVC_STATIC_RUNTIME:BOOL=OFF COMMIT_ID 00f32d4)
 
 SET(include_str)
-list(APPEND include_str "include(${CGET_BIN_DIR}/load.cmake)\n")
+list(APPEND include_str "include(\"${CGET_BIN_DIR}/load.cmake\")\n")
 if(NOT MSVC)
     list(APPEND include_str "SET(_gRPC_BASELIB_LIBRARIES dl pthread CACHE STRING \"\" FORCE)\n")
 endif()
